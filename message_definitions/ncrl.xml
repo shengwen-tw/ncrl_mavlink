@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<mavlink>
+
+    <include>common.xml</include>
+    <!-- <version>9</version> -->
+    <dialect>8</dialect>
+
+    <enums>
+        <!-- Enums are defined here (optional) -->
+        <enum name="POLYNOMIAL_TRAJECTORY_CMD_TYPES">
+            <description>Command types of polynomial trajectory</description>
+            <entry value="0" name="TRAJECTORY_FOLLOWING_START">
+                <description>Start trajectory following</description>
+            </entry>
+            <entry value="1" name="TRAJECTORY_FOLLOWING_STOP">
+                <description>Stop trajectory following</description>
+            </entry>
+        </enum>
+
+        <enum name="POLYNOMIAL_TRAJECTORY_ACK_VALUES">
+            <description>Command types of polynomial trajectory</description>
+            <entry value="0" name="TRAJECTORY_ACK_OK">
+                <description>Start trajectory following</description>
+            </entry>
+            <entry value="1" name="TRAJECTORY_ACK_ERROR">
+                <description>Stop trajectory following</description>
+            </entry>
+        </enum>
+    </enums>
+
+    <messages>
+        <!-- Messages are defined here (optional) -->
+        <!-- Message IDs between 11000 and 11999 are available (Overide ArduPilotMega's range) -->
+        <message id="11000" name="POLYNOMIAL_TRAJECTORY_WRITE">
+        <description>Write trajectory polynomial equation to uav</description>
+        <field type="uint8_t" name="target_system">System ID</field>
+        <field type="uint8_t" name="target_component">Component ID</field>
+        <field type="uint8_t" name="list_size">Trajectory list size</field>
+        </message>
+
+        <message id="11001" name="POLYNOMIAL_TRAJECTORY_CMD">
+        <description></description>
+        <field type="uint8_t" name="target_system">System ID</field>
+        <field type="uint8_t" name="target_component">Component ID</field>
+        <field type="uint8_t" name="cmd">Polynomial trajectory command</field>
+        </message>
+
+        <message id="11002" name="POLYNOMIAL_TRAJECTORY_ACK">
+        <description></description>
+        <field type="uint8_t" name="target_system">System ID</field>
+        <field type="uint8_t" name="target_component">Component ID</field>
+        <field type="uint8_t" name="ack_val">Ack value</field>
+        </message>
+
+        <message id="11003" name="POLYNOMIAL_TRAJECTORY_ITEM">
+        <description></description>
+        <field type="uint8_t" name="target_system">System ID</field>
+        <field type="uint8_t" name="target_component">Component ID</field>
+        <field type="float[8]" name="x_coeff" units="m">Coefficients of x trajectory</field>
+        <field type="float[8]" name="y_coeff" units="m">Coefficients of y trajectory</field>
+        <field type="float[8]" name="z_coeff" units="m">Coefficients of z trajectory</field>
+        <field type="float[8]" name="yaw_coeff" units="m">Coefficients of yaw trajectory</field>
+        </message>
+    </messages>
+
+</mavlink>
