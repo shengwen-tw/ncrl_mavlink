@@ -12,25 +12,25 @@ python ./pymavlink/tools/mavgen.py --lang=C --wire-protocol=2.0 --output=generat
 
 ## Extended messages
 
-1. polynomial_trajectory_write
+**polynomial_trajectory_write**
 
   * uint8_t target_system
   * uint8_t target_component
   * uint8_t list_size
 
-2. polynomial_trajectory_cmd
+**polynomial_trajectory_cmd**
 
   * uint8_t target_system
   * uint8_t target_component
   * uint8_t cmd
 
-3. polynomial_trajectory_ack
+**polynomial_trajectory_ack**
 
   * uint8_t target_system
   * uint8_t target_component
   * uint8_t ack_val
 
-4. polynomial_trajectory_item
+**polynomial_trajectory_item**
 
   * uint8_t target_system
   * uint8_t target_component
