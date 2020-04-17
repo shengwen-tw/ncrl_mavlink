@@ -14,23 +14,41 @@ python ./pymavlink/tools/mavgen.py --lang=C --wire-protocol=2.0 --output=generat
 
 1. polynomial_trajectory_write
 
+  * uint8_t target_system
+  * uint8_t target_component
+  * uint8_t list_size
+
 2. polynomial_trajectory_cmd
+
+  * uint8_t target_system
+  * uint8_t target_component
+  * uint8_t cmd
 
 3. polynomial_trajectory_ack
 
+  * uint8_t target_system
+  * uint8_t target_component
+  * uint8_t ack_val
+
 4. polynomial_trajectory_item
+
+  * uint8_t target_system
+  * uint8_t target_component
+  * float[8] x_coeff
+  * float[8] y_coeff
+  * float[8] z_coeff
+  * float[8] yaw_coeff
 
 ## Extended enums
 
-**POLYNOMIAL_TRAJECTORY_CMD_TYPES**
+**polynomial_trajectory_cmd_types**
 
-TRAJECTORY_FOLLOWING_START: 0
+trajectory_following_start: 0
 
-TRAJECTORY_FOLLOWING_STOP: 1
+trajectory_following_stop: 1
 
-**POLYNOMIAL_TRAJECTORY_ACK_VALUES**
+**polynomial_trajectory_ack_values**
 
-TRAJECTORY_ACK_OK: 0
+trajectory_ack_ok: 0
 
-TRAJECTORY_ACK_ERROR: 1
-
+trajectory_ack_error: 1
