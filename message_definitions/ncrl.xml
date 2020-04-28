@@ -43,6 +43,7 @@
         <field type="uint8_t" name="target_system">System ID</field>
         <field type="uint8_t" name="target_component">Component ID</field>
         <field type="uint8_t" name="cmd">Polynomial trajectory command</field>
+        <field type="uint8_t" name="option">Polynomial trajectory command option</field>
         </message>
 
         <message id="11002" name="POLYNOMIAL_TRAJECTORY_ACK">
