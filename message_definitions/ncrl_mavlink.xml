@@ -1,12 +1,9 @@
 <?xml version="1.0"?>
 <mavlink>
-
     <include>common.xml</include>
-    <!-- <version>9</version> -->
-    <dialect>8</dialect>
-
+    <dialect>10</dialect>
     <enums>
-        <!-- Enums are defined here (optional) -->
+        <!-- Enums are defined here -->
         <enum name="POLYNOMIAL_TRAJECTORY_CMD_TYPES">
             <description>Command types of polynomial trajectory</description>
             <entry value="0" name="TRAJECTORY_FOLLOWING_START">
@@ -28,20 +25,43 @@
             <entry value="2" name="TRAJECTORY_ACK_LIST_EMPTY">
                 <description>Trajectory set failed, UAV trajectory list is empty</description>
             </entry>
-            <entry value="3" name="TRAJECTORY_ACK_ERROR">
+            <entry value="3" name="TRAJECTORY_ACK_INDEX_MISMATCHED">
+                <description>Trajectory set failed, UAV received trajectory with wrong order</description>
+            </entry>
+            <entry value="4" name="TRAJECTORY_ACK_ERROR">
                 <description>Trajectory set failed, undefined/universal type error</description>
+            </entry>
+        </enum>
+
+        <enum name="POLYNOMIAL_TRAJECTORY_TYPES">
+            <description>Polynomial trajectory type</description>
+            <entry value="0" name="TRAJECTORY_POSITION_X">
+                <description>Trajectory of x position</description>
+            </entry>
+            <entry value="1" name="TRAJECTORY_POSITION_Y">
+                <description>Trajectory of y position</description>
+            </entry>
+            <entry value="2" name="TRAJECTORY_POSITION_Z">
+                <description>Trajectory of z position</description>
+            </entry>
+            <entry value="3" name="TRAJECTORY_ANGNLE_YAW">
+                <description>Trajectory of yaw angle</description>
             </entry>
         </enum>
     </enums>
 
     <messages>
-        <!-- Messages are defined here (optional) -->
+        <!-- Messages are defined here -->
         <!-- Message IDs between 11000 and 11999 are available (Overide ArduPilotMega's range) -->
         <message id="11000" name="POLYNOMIAL_TRAJECTORY_WRITE">
         <description>Write trajectory polynomial equation to uav</description>
         <field type="uint8_t" name="target_system">System ID</field>
         <field type="uint8_t" name="target_component">Component ID</field>
         <field type="uint8_t" name="list_size">Trajectory list size</field>
+        <field type="uint8_t" name="x_enabled">UAV should track x trajectory (1: true, 0: false)</field>
+        <field type="uint8_t" name="y_enabled">UAV should track y trajectory (1: true, 0: false)</field>
+        <field type="uint8_t" name="z_enabled">UAV should track z trajectory (1: true, 0: false)</field>
+        <field type="uint8_t" name="yaw_enabled">UAV should track yaw trajectory (1: true, 0: false)</field>
         </message>
 
         <message id="11001" name="POLYNOMIAL_TRAJECTORY_CMD">
@@ -63,11 +83,9 @@
         <description></description>
         <field type="uint8_t" name="target_system">System ID</field>
         <field type="uint8_t" name="target_component">Component ID</field>
+        <field type="uint8_t" name="type">Type (x, y, z or yaw)</field>
 	<field type="uint8_t" name="index">Index of trajectory segment</field>
-        <field type="float[8]" name="x_coeff" units="m">Coefficients of x trajectory</field>
-        <field type="float[8]" name="y_coeff" units="m">Coefficients of y trajectory</field>
-        <field type="float[8]" name="z_coeff" units="m">Coefficients of z trajectory</field>
-        <field type="float[8]" name="yaw_coeff" units="m">Coefficients of yaw trajectory</field>
+        <field type="float[8]" name="coeff">Coefficients of the trajectory</field>
         </message>
     </messages>
 
