@@ -20,10 +20,16 @@
         <enum name="POLYNOMIAL_TRAJECTORY_ACK_VALUES">
             <description>Command types of polynomial trajectory</description>
             <entry value="0" name="TRAJECTORY_ACK_OK">
-                <description>Start trajectory following</description>
+                <description>Trajectory set succeeded</description>
             </entry>
-            <entry value="1" name="TRAJECTORY_ACK_ERROR">
-                <description>Stop trajectory following</description>
+            <entry value="1" name="TRAJECTORY_ACK_BUSY">
+                <description>Trajectory set failed, UAV is busy</description>
+            </entry>
+            <entry value="2" name="TRAJECTORY_ACK_LIST_EMPTY">
+                <description>Trajectory set failed, UAV trajectory list is empty</description>
+            </entry>
+            <entry value="3" name="TRAJECTORY_ACK_ERROR">
+                <description>Trajectory set failed, undefined/universal type error</description>
             </entry>
         </enum>
     </enums>
@@ -57,6 +63,7 @@
         <description></description>
         <field type="uint8_t" name="target_system">System ID</field>
         <field type="uint8_t" name="target_component">Component ID</field>
+	<field type="uint8_t" name="index">Index of trajectory segment</field>
         <field type="float[8]" name="x_coeff" units="m">Coefficients of x trajectory</field>
         <field type="float[8]" name="y_coeff" units="m">Coefficients of y trajectory</field>
         <field type="float[8]" name="z_coeff" units="m">Coefficients of z trajectory</field>

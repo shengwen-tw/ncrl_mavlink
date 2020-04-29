@@ -7,7 +7,7 @@ A MAVLink dialect extended by NCRL (Networked Control Robotics Lab)
 ```
 git clone https://github.com/ArduPilot/pymavlink.git
 
-python ./pymavlink/tools/mavgen.py --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/ncrl.xml
+python ./pymavlink/tools/mavgen.py --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/ncrl_mavlink.xml
 ```
 
 ## Extended messages
