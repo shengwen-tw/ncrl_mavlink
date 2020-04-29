@@ -23,6 +23,7 @@ python ./pymavlink/tools/mavgen.py --lang=C --wire-protocol=2.0 --output=generat
   * uint8_t target_system
   * uint8_t target_component
   * uint8_t cmd
+  * bool option
 
 **polynomial_trajectory_ack**
 
