@@ -25,10 +25,7 @@
             <entry value="2" name="TRAJECTORY_ACK_LIST_EMPTY">
                 <description>Trajectory set failed, UAV trajectory list is empty</description>
             </entry>
-            <entry value="3" name="TRAJECTORY_ACK_INDEX_MISMATCHED">
-                <description>Trajectory set failed, UAV received trajectory with wrong order</description>
-            </entry>
-            <entry value="4" name="TRAJECTORY_ACK_ERROR">
+            <entry value="3" name="TRAJECTORY_ACK_ERROR">
                 <description>Trajectory set failed, undefined/universal type error</description>
             </entry>
         </enum>
@@ -44,7 +41,7 @@
             <entry value="2" name="TRAJECTORY_POSITION_Z">
                 <description>Trajectory of z position</description>
             </entry>
-            <entry value="3" name="TRAJECTORY_ANGNLE_YAW">
+            <entry value="3" name="TRAJECTORY_ANGLE_YAW">
                 <description>Trajectory of yaw angle</description>
             </entry>
         </enum>
@@ -58,8 +55,6 @@
         <field type="uint8_t" name="target_system">System ID</field>
         <field type="uint8_t" name="target_component">Component ID</field>
         <field type="uint8_t" name="list_size">Trajectory list size</field>
-        <field type="uint8_t" name="x_enabled">UAV should track x trajectory (1: true, 0: false)</field>
-        <field type="uint8_t" name="y_enabled">UAV should track y trajectory (1: true, 0: false)</field>
         <field type="uint8_t" name="z_enabled">UAV should track z trajectory (1: true, 0: false)</field>
         <field type="uint8_t" name="yaw_enabled">UAV should track yaw trajectory (1: true, 0: false)</field>
         </message>
@@ -86,6 +81,40 @@
         <field type="uint8_t" name="type">Type (x, y, z or yaw)</field>
 	<field type="uint8_t" name="index">Index of trajectory segment</field>
         <field type="float[8]" name="coeff">Coefficients of the trajectory</field>
+        <field type="float" name="flight_time">Flight time</field>
+        </message>
+
+        <message id="11004" name="POLYNOMIAL_TRAJECTORY_POSITION_DEBUG">
+        <description></description>
+        <field type="uint8_t" name="target_system">System ID</field>
+        <field type="uint8_t" name="target_component">Component ID</field>
+        <field type="float" name="x">uav current x position</field>
+        <field type="float" name="y">uav current y position</field>
+        <field type="float" name="z">uav current z position</field>
+        <field type="float" name="x_d">uav current desired x position</field>
+        <field type="float" name="y_d">uav current desired y position</field>
+        <field type="float" name="z_d">uav current desired z position</field>
+        </message>
+
+        <message id="11005" name="POLYNOMIAL_TRAJECTORY_VELOCITY_DEBUG">
+        <description></description>
+        <field type="uint8_t" name="target_system">System ID</field>
+        <field type="uint8_t" name="target_component">Component ID</field>
+        <field type="float" name="vx">uav current x velocity</field>
+        <field type="float" name="vy">uav current y velocity</field>
+        <field type="float" name="vz">uav current z velocity</field>
+        <field type="float" name="vx_d">uav current desired x velocity</field>
+        <field type="float" name="vy_d">uav current desired y velocity</field>
+        <field type="float" name="vz_d">uav current desired z velocity</field>
+        </message>
+
+        <message id="11006" name="POLYNOMIAL_TRAJECTORY_ACCELERATION_DEBUG">
+        <description></description>
+        <field type="uint8_t" name="target_system">System ID</field>
+        <field type="uint8_t" name="target_component">Component ID</field>
+        <field type="float" name="ax_ff">uav current desired x acceleration feedforward</field>
+        <field type="float" name="ay_ff">uav current desired y acceleration feedforward</field>
+        <field type="float" name="az_ff">uav current desired z acceleration feedforward</field>
         </message>
     </messages>
 
