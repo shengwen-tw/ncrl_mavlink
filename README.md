@@ -39,6 +39,36 @@ python ./pymavlink/tools/mavgen.py --lang=C --wire-protocol=2.0 --output=generat
   * float[8] y_coeff
   * float[8] z_coeff
   * float[8] yaw_coeff
+  
+  **polynomial_trajectory_position_debug**
+
+  * uint8_t target_system
+  * uint8_t target_component
+  * float x
+  * float y
+  * float z
+  * float x_d
+  * float y_d
+  * float z_d
+  
+  **polynomial_trajectory_velocity_debug**
+
+  * uint8_t target_system
+  * uint8_t target_component
+  * float vx
+  * float vy
+  * float vz
+  * float vx_d
+  * float vy_d
+  * float vz_d
+
+  **polynomial_trajectory_acceleration_debug**
+
+  * uint8_t target_system
+  * uint8_t target_component
+  * float ax_ff
+  * float ay_ff
+  * float az_ff
 
 ## Extended enums
 
